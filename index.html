@@ -9,13 +9,12 @@
         :root {
             --primary-color: #ff4d6d;
             --secondary-color: #ff8fa3;
-            --accent-color: #ffb3c1;
             --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
             --text-color: #590d22;
             --glass: rgba(255, 255, 255, 0.7);
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
         body {
             margin: 0; padding: 0;
@@ -23,8 +22,7 @@
             background: var(--bg-gradient);
             color: var(--text-color);
             min-height: 100vh;
-            overflow-x: hidden;
-            /* Romantic heart cursor */
+            overflow: hidden;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%23ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
         }
 
@@ -37,119 +35,89 @@
             justify-content: center; align-items: center;
         }
 
-        .hidden { display: none !important; opacity: 0; transform: translateY(20px); }
+        .hidden { display: none !important; opacity: 0; }
 
         h1 {
             font-family: 'Dancing Script', cursive;
             font-size: clamp(2.5rem, 8vw, 4rem);
             color: var(--primary-color);
-            margin-bottom: 10px;
-            animation: heartBeat 2s infinite;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        @keyframes heartBeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.05); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.05); }
-            70% { transform: scale(1); }
+        /* PROPOSAL SECTION */
+        .proposal-gif { width: 180px; border-radius: 20px; margin-bottom: 20px; }
+        
+        .prop-btn-group { 
+            display: flex; 
+            flex-direction: row; /* Keeps them side-by-side */
+            gap: 30px; 
+            align-items: center; 
+            justify-content: center;
+            margin-top: 30px;
+            width: 100%;
+            position: relative;
+        }
+        
+        #yesBtn {
+            padding: 15px 40px; font-size: 1.4rem; background: var(--primary-color);
+            color: white; border: none; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+            z-index: 100;
         }
 
-        p.subtitle { font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px; }
+        #noBtn {
+            padding: 15px 40px; font-size: 1.4rem; background: #888;
+            color: white; border: none; border-radius: 50px; cursor: pointer;
+            z-index: 99; transition: 0.2s ease;
+        }
 
+        /* MAIN APP STYLES */
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 
         .square-card {
-            width: 170px; height: 170px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 30px;
-            cursor: pointer;
-            display: flex; flex-direction: column;
+            width: 160px; height: 160px;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5); border-radius: 30px;
+            cursor: pointer; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            gap: 15px; box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
+            gap: 12px; box-shadow: 0 10px 30px rgba(255, 77, 109, 0.1);
         }
 
-        .square-card:hover {
-            background: var(--primary-color);
-            transform: translateY(-15px) rotate(3deg);
-            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.4);
-        }
-
-        .square-card:hover span, .square-card:hover .icon { color: white; }
-        .icon { font-size: 3rem; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1)); }
-        .square-card span { font-weight: 700; color: var(--primary-color); letter-spacing: 1px; }
+        .square-card:hover { transform: translateY(-10px); background: var(--primary-color); color: white; }
+        .icon { font-size: 2.8rem; }
 
         .parchment {
-            background: #fff;
-            padding: 50px; border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            position: relative; overflow: hidden;
-            max-width: 600px; width: 100%;
-            background-image: radial-gradient(#fcf5e5 90%, #f2e3c2 100%);
+            background: #fff; padding: 40px; border-radius: 20px;
+            max-width: 600px; width: 100%; background-image: radial-gradient(#fcf5e5 90%, #f2e3c2 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .paper-content {
-            font-family: 'Parisienne', cursive; font-size: 1.8rem;
-            color: #4a3728; line-height: 1.6; text-align: left;
-            position: relative; z-index: 1;
-        }
+        .paper-content { font-family: 'Parisienne', cursive; font-size: 1.8rem; text-align: left; }
 
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px; width: 100%;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; width: 100%; }
+        .photo-card { background: white; padding: 12px 12px 35px 12px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .photo-card img { width: 100%; height: 260px; object-fit: cover; }
 
-        .photo-card {
-            background: white; padding: 15px 15px 40px 15px;
-            border-radius: 5px; box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            transform: rotate(var(--r));
-        }
-
-        .photo-card:hover { transform: rotate(0) scale(1.1); z-index: 10; }
-
-        .photo-card img {
-            width: 100%; height: 280px; object-fit: cover;
-            border: 1px solid #eee; margin-bottom: 15px;
-        }
-
-        .photo-caption { font-family: 'Parisienne', cursive; font-size: 1.5rem; color: #444; }
-
-        .vidhi-input {
-            width: 100%; height: 180px; background: rgba(255,255,255,0.5);
-            border: 2px solid var(--secondary-color); border-radius: 20px;
-            padding: 20px; font-family: 'Nunito', sans-serif;
-            font-size: 1.1rem; outline: none; resize: none;
-        }
-
-        .whatsapp-btn {
-            background: #25D366; color: white; border: none;
-            padding: 15px 40px; border-radius: 50px;
-            font-size: 1.1rem; font-weight: bold; cursor: pointer;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-            margin-top: 20px;
-        }
-
-        .secondary-btn {
-            margin-top: 40px; background: none; border: none;
-            color: var(--primary-color); text-decoration: underline;
-            font-weight: bold; cursor: pointer;
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; transform: translateY(-20px) scale(2); }
-        }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-20px) scale(2); } }
     </style>
 </head>
 <body>
 
     <canvas id="canvas-bg"></canvas>
 
-    <div id="home-section" class="container">
-        <h1 id="main-title">Happy Valentine's Day ❤️</h1>
-        <p class="subtitle">To my favorite person, Vidhi Jain.</p>
-        
+    <div id="proposal-section" class="container">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXF4ZTh4eXN6eXN6eXN6eXN6eXN6eXN6eXN6eXN6eXN6ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Panda" class="proposal-gif">
+        <h1>Vidhi, Will you be my Valentine? 🌹</h1>
+        <div class="prop-btn-group">
+            <button id="yesBtn" onclick="acceptProposal()">YES</button>
+            <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">NO</button>
+        </div>
+    </div>
+
+    <div id="home-section" class="container hidden">
+        <h1>Happy Valentine's Day ❤️</h1>
+        <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px;">To my favorite person, Vidhi Jain.</p>
         <div class="btn-group">
             <button class="square-card" onclick="showSection('gallery-section')">
                 <span class="icon">📸</span><span>Memories</span>
@@ -166,103 +134,103 @@
     <div id="gallery-section" class="container hidden">
         <h1>Our Story</h1>
         <div class="gallery-grid">
-            <div class="photo-card" style="--r: -3deg"><img src="firstday.jpeg"><div class="photo-caption">The Day We Met</div></div>
-            <div class="photo-card" style="--r: 2deg"><img src="dinnerdate.jpeg"><div class="photo-caption">Dinner Date</div></div>
-            <div class="photo-card" style="--r: -1deg"><img src="funnyselfie.jpeg"><div class="photo-caption">Our 😜 Side</div></div>
+            <div class="photo-card" style="transform: rotate(-3deg)"><img src="firstday.jpeg"><p class="paper-content" style="font-size:1.1rem; text-align:center">The Day We Met</p></div>
+            <div class="photo-card" style="transform: rotate(2deg)"><img src="dinnerdate.jpeg"><p class="paper-content" style="font-size:1.1rem; text-align:center">Dinner Date</p></div>
+            <div class="photo-card" style="transform: rotate(-1deg)"><img src="funnyselfie.jpeg"><p class="paper-content" style="font-size:1.1rem; text-align:center">Our 😜 Side</p></div>
         </div>
-        <button class="secondary-btn" onclick="showSection('home-section')">← Go Back</button>
+        <button onclick="showSection('home-section')" style="margin-top:30px; cursor:pointer; background:none; border:none; text-decoration:underline; color:var(--primary-color); font-weight:bold;">← Back Home</button>
     </div>
 
     <div id="letter-section" class="container hidden">
         <div class="parchment">
             <div class="paper-content">
                 My Dearest Vidhi,<br><br>
-                I was sitting here trying to think of the perfect way to tell you how much I love you, but the truth is, it’s not just about the big moments. It’s about everything in between.<br><br>
-                Every text, every laugh, and every inside joke makes my life a thousand times better. Thank you for being you.<br><br>
-                Happy Valentine’s Day, Vidhi. I’m so lucky I get to be the one who loves you.<br><br>
+               I was sitting here trying to think of the perfect way to tell you how much I love you, but the truth is, it’s not just about the big moments. It’s about everything in between.
+
+Every text, every laugh, and every inside joke makes my life a thousand times better. Thank you for being exactly who you are. I don’t need a perfect life as long as I have you by my side.
+
+Happy Valentine’s Day, Vidhi. I’m so lucky I get to be the one who loves you.<br><br>
                 Always yours, <br>
                 <b>Kavish</b>
             </div>
         </div>
-        <button class="secondary-btn" onclick="showSection('home-section')">← Go Back</button>
+        <button onclick="showSection('home-section')" style="margin-top:30px; cursor:pointer; background:none; border:none; text-decoration:underline; color:var(--primary-color); font-weight:bold;">← Back Home</button>
     </div>
 
     <div id="feelings-section" class="container hidden">
-        <h1>How do you feel, Vidhi?</h1>
-        <div class="parchment" style="background: white;">
-            <textarea id="vidhiResponse" class="vidhi-input" placeholder="Type your thoughts here, my love..."></textarea>
-            <button class="whatsapp-btn" onclick="sendResponse()">Send to Kavish 📱</button>
+        <h1>How do you feel?</h1>
+        <div class="parchment" style="background:white;">
+            <textarea id="vidhiResponse" style="width:100%; height:150px; border-radius:15px; padding:15px; border:2px solid var(--primary-color); font-family:inherit;" placeholder="Type your thoughts here..."></textarea>
+            <button onclick="sendResponse()" style="background:#25D366; color:white; border:none; padding:12px 30px; border-radius:50px; margin-top:15px; cursor:pointer; font-weight:bold; width:100%;">Send to Kavish 📱</button>
         </div>
-        <button class="secondary-btn" onclick="showSection('home-section')">← Go Back</button>
+        <button onclick="showSection('home-section')" style="margin-top:30px; cursor:pointer; background:none; border:none; text-decoration:underline; color:var(--primary-color); font-weight:bold;">← Back Home</button>
     </div>
 
     <script>
-        // Section Navigation
-        function showSection(id) {
-            const containers = document.querySelectorAll('.container');
-            containers.forEach(c => {
-                c.style.opacity = '0';
-                setTimeout(() => c.classList.add('hidden'), 400);
-            });
+        let yesSize = 1;
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
             
-            setTimeout(() => {
-                const active = document.getElementById(id);
-                active.classList.remove('hidden');
-                setTimeout(() => active.style.opacity = '1', 50);
-            }, 450);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Increment Yes button size
+            yesSize += 0.35;
+            yesBtn.style.transform = `scale(${yesSize})`;
+            
+            // Random movement for No button
+            const padding = 50;
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
         }
 
-        // WhatsApp Integration
+        function acceptProposal() {
+            document.getElementById('proposal-section').classList.add('hidden');
+            document.getElementById('home-section').classList.remove('hidden');
+            document.body.style.overflow = 'auto';
+            // Boost particles for celebration
+            for(let i=0; i<40; i++) particles.push(new Particle());
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
         function sendResponse() {
             const msg = document.getElementById('vidhiResponse').value;
-            if(!msg) return alert("Please write something for me! 🥰");
+            if(!msg) return alert("Write something sweet! 🥰");
             window.open(`https://wa.me/919082019545?text=${encodeURIComponent("❤️ Vidhi says: " + msg)}`, '_blank');
         }
 
-        // --- BACKGROUND MAGIC (Floating Hearts) ---
+        // --- BACKGROUND HEARTS ---
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.onresize = resize;
-        resize();
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.onresize = resize; resize();
 
         class Particle {
             constructor() { this.reset(); }
             reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 100;
-                this.size = Math.random() * 15 + 5;
-                this.speed = Math.random() * 1 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.x = Math.random() * canvas.width; this.y = canvas.height + 100;
+                this.size = Math.random() * 12 + 4; this.speed = Math.random() * 0.8 + 0.4;
+                this.opacity = Math.random() * 0.4 + 0.2;
                 this.color = ['#ff4d6d', '#ff8fa3', '#ffb3c1'][Math.floor(Math.random()*3)];
             }
-            update() {
-                this.y -= this.speed;
-                this.x += Math.sin(this.y / 50);
-                if (this.y < -50) this.reset();
-            }
+            update() { this.y -= this.speed; if (this.y < -50) this.reset(); }
             draw() {
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity; ctx.fillStyle = this.color;
                 ctx.beginPath();
-                const topCurveHeight = this.size * 0.3;
-                ctx.moveTo(this.x, this.y + topCurveHeight);
-                ctx.bezierCurveTo(this.x, this.y, this.x - this.size / 2, this.y, this.x - this.size / 2, this.y + topCurveHeight);
-                ctx.bezierCurveTo(this.x - this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x, this.y + (this.size + topCurveHeight) / 2, this.x, this.y + this.size);
-                ctx.bezierCurveTo(this.x, this.y + (this.size + topCurveHeight) / 2, this.x + this.size / 2, this.y + (this.size + topCurveHeight) / 2, this.x + this.size / 2, this.y + topCurveHeight);
-                ctx.bezierCurveTo(this.x + this.size / 2, this.y, this.x, this.y, this.x, this.y + topCurveHeight);
+                ctx.arc(this.x, this.y, this.size/2, 0, Math.PI*2);
                 ctx.fill();
             }
         }
-
-        for (let i = 0; i < 30; i++) particles.push(new Particle());
-
+        for (let i = 0; i < 35; i++) particles.push(new Particle());
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => { p.update(); p.draw(); });
@@ -270,17 +238,13 @@
         }
         animate();
 
-        // Cursor Trail
+        // Mouse Heart Trail
         window.addEventListener('mousemove', (e) => {
             if(Math.random() > 0.85) {
                 const trail = document.createElement('div');
-                trail.innerHTML = '❤️';
-                trail.style.position = 'fixed';
-                trail.style.left = e.clientX + 'px';
-                trail.style.top = e.clientY + 'px';
-                trail.style.pointerEvents = 'none';
-                trail.style.fontSize = '12px';
-                trail.style.zIndex = '9999';
+                trail.innerHTML = '❤️'; trail.style.position = 'fixed';
+                trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px';
+                trail.style.pointerEvents = 'none'; trail.style.fontSize = '12px';
                 trail.style.animation = 'fadeOut 1s forwards';
                 document.body.appendChild(trail);
                 setTimeout(() => trail.remove(), 1000);
